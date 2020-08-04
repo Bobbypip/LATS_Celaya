@@ -13,15 +13,25 @@ $(document).ready(function(){
       });
  
     let ubicacionPrincipal = window.pageYOffset;
+    let zero = 0;
+    let upOffset = 0;
     window.onscroll = function()
     {
         let desplazamientoActual = window.pageYOffset;
+        console.log(ubicacionPrincipal + ": " + desplazamientoActual);
         if(ubicacionPrincipal >= desplazamientoActual)
         {
-            document.getElementById('myNavbar').style.top = '0';
+            upOffset = upOffset+3;
+            if(upOffset> 0){upOffset = 0; }
+            document.getElementById('myNavbar').style.top = (upOffset)+'px';
+            zero = window.pageYOffset;
         }else
         {
-            document.getElementById('myNavbar').style.top = '-100px';            
+            upOffset = upOffset-3;
+            if(upOffset<-89){upOffset = -89; }
+            console.log('2: '+upOffset);
+            document.getElementById('myNavbar').style.top = (upOffset)+'px';
+            
         }
         ubicacionPrincipal = desplazamientoActual;
     }
