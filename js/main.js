@@ -21,10 +21,8 @@ $(document).ready(function(){
         console.log(ubicacionPrincipal + ": " + desplazamientoActual);
         if(ubicacionPrincipal >= desplazamientoActual)
         {
-            upOffset = upOffset+3;
-            if(upOffset> 0){upOffset = 0; }
+            upOffset = 0;
             document.getElementById('myNavbar').style.top = (upOffset)+'px';
-            zero = window.pageYOffset;
         }else
         {
             upOffset = upOffset-3;
