@@ -12,19 +12,17 @@ $(document).ready(function(){
         speed: 500
       });
  
-
-    ScrollReveal().reveal('nav', {
-        delay: 300,
-        origin: 'bottom'
-    });
-    
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-    
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
+    let ubicacionPrincipal = window.pageYOffset;
+    window.onscroll = function()
+    {
+        let desplazamientoActual = window.pageYOffset;
+        if(ubicacionPrincipal >= desplazamientoActual)
+        {
+            document.getElementById('myNavbar').style.top = '0';
+        }else
+        {
+            document.getElementById('myNavbar').style.top = '-100px';            
+        }
+        ubicacionPrincipal = desplazamientoActual;
+    }
  });
